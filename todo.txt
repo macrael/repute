@@ -1,18 +1,61 @@
+NOWNOWNOW
 x basic bookmarklet
-* upgrade the bookmarklet to deal with votes/authors
-
-* Do we really need publish date? probably not. Might be a lot of work for no benefit
-
-* deploy on prgmr.
+* bookmarklet 2.0
 
 
 
 
 
+BOOKMARKLET
+* have initial add be done in the actual bookmarklet
+    * this way we can one day customize the response for different sites
+
+* needs ui
+    * some indication that it is doing sometihng
+    * drop down like a sheet from the top of the screen
+
+get author name
+    * have a field you can type into, or just hilight the name
+        *someday, could have you click, figure out the element and train the
+            parser for that site?
+
+get notes about article (/author?)
+
+get votes
 
 
 
+SITE PARSING
+* this is going to have to be some sort of configurable dealie per site
+    * a regex that gets the title out of the titlebar?
+        * how does instapaper do this? (it does not...)
+        * might not be worth it, plus the title gives you some information
+    
+    * Getting the author name. 
+        * for lots of sites, it is just one author per site
+        * for some sites, the author should be in a standard place 
+            (if we get wordpress + tumblr should be most of the way there)
+        * for some sites it is a custom jobbie. 
+            * track if we are starting to get jibberish back.
+
+
+ADD PATH
+* need to be careful in getting back authors, what about people who share a
+    name?
+
+* probably drop the publised date
 
 * match incoming url to your urls. (URL/USER is a primary key) 
     * make this match fuzzy. If you can, strip off end detritus
         * might need rules for different sites on how to handle this
+
+INFO BOOKMARKLET
+* need to dispaly other artices you read by this person
+
+
+
+----------
+
+EVENTUALLY
+* deploy on prgmr.
+    * one day, deploy propperly on prgmr. (mod wsgi)
