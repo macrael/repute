@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Recent</title>
+</head>
+<body>
+What.
+
+{% if not recent_reads %}
+<p> Something went wrong, you shiould have that.</p>
+{% endif %}
+
+<ol>
+{% for article in recent_reads %}
+    <li>{{ article.title }}</li>
+{% endfor %}
+</ol>
+
+</body>
+</html>

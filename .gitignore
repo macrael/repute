@@ -1,0 +1,5 @@
+*.pyc
+*.sqlite3
+make_bookmarklet.pl
+settings.py
+

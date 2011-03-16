@@ -1,0 +1,18 @@
+x basic bookmarklet
+* upgrade the bookmarklet to deal with votes/authors
+
+* Do we really need publish date? probably not. Might be a lot of work for no benefit
+
+* deploy on prgmr.
+
+
+
+
+
+
+
+
+
+* match incoming url to your urls. (URL/USER is a primary key) 
+    * make this match fuzzy. If you can, strip off end detritus
+        * might need rules for different sites on how to handle this
