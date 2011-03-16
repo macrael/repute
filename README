@@ -1,3 +1,12 @@
 Not much going on yet. Idea is to keep track of who you are reading online.
 
 
+Setup
+-----
+You will need to install the following dependencies:
+Django
+http://code.google.com/p/django-evolution/
+
+look for instances of /PATH/TO/PROJECT/ in settings.py and fix them
+look for instances of localhost:8000 and point them somewhere else if you like
+
