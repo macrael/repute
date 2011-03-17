@@ -1,6 +1,9 @@
 NOWNOWNOW
 x basic bookmarklet
 * bookmarklet 2.0
+* Get UNICODE support on this machine. 
+    http://www.linux-cjk.net/Console/garabik/garabik.howto.html
+    http://macrael.xen.prgmr.com:8005/add?url=http://steveblank.com/2010/07/12/nukeem-till-they-glow-–-quitting-my-first-job/&title=Nuke’em%20‘Till%20They%20Glow%20–%20Quitting%20My%20First%20Job%20«%20Steve%20Blank&
 
 
 
