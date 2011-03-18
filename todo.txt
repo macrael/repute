@@ -1,10 +1,18 @@
 NOWNOWNOW
 x basic bookmarklet
-* bookmarklet 2.0
+x bookmarklet 2.0
+* bookmarklet 3.0
+    * steelo
+    * move the js to be dynamic
+    * submit title and url in initial send
+    * js should come back with the stored title and stored author name if it
+        exists
+    * auto populate those fields
+    * bookmarklet should disappear afterwards
+    
 * Get UNICODE support on this machine. 
     http://www.linux-cjk.net/Console/garabik/garabik.howto.html
     http://macrael.xen.prgmr.com:8005/add?url=http://steveblank.com/2010/07/12/nukeem-till-they-glow-–-quitting-my-first-job/&title=Nuke’em%20‘Till%20They%20Glow%20–%20Quitting%20My%20First%20Job%20«%20Steve%20Blank&
-
 
 
 
@@ -47,8 +55,9 @@ ADD PATH
     name?
 
 * probably drop the publised date
+    * maybe track the orignally submitted date. 
 
-* match incoming url to your urls. (URL/USER is a primary key) 
+x match incoming url to your urls. (URL/USER is a primary key) 
     * make this match fuzzy. If you can, strip off end detritus
         * might need rules for different sites on how to handle this
 
@@ -57,8 +66,13 @@ INFO BOOKMARKLET
 
 
 
+FRONTPAGE
+put the bookmarklet up for me
+
 ----------
 
 EVENTUALLY
 * deploy on prgmr.
     * one day, deploy propperly on prgmr. (mod wsgi)
+
+

@@ -24,7 +24,7 @@ class Article(models.Model):
     class Meta:
         unique_together = ("url","user")
     
-    def __unicode(self):
+    def __unicode__(self):
         return self.title
 
 

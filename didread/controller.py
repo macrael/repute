@@ -5,17 +5,18 @@ from django.contrib.auth.models import User
 
 # Find associate and return || DOES NOT SAVE!
 def author_for_article(article,name) :
-    print article.url
+    print "Entering Author Get"
     parsed = urlparse(article.url)
 
     consider = []
 
     if name :
         for author in article.user.author_set.all() :
-            if author.name.downcase() == name.downcase() :
+            if author.name.lower() == name.lower() :
                 consider.append(author)
 
         if len(consider) == 0 :
+            print "creating a NEW author"
             author = Author()
             author.user = article.user
             author.name = name
@@ -37,14 +38,6 @@ def author_for_article(article,name) :
     for author in article.user.author_set.all() :
         if urlparse(author.url).netloc == urlparse(article.url).netloc :
             consider.append(author)
-
-    if len(consider) == 0 :
-        author = Author()
-        author.user = article.user
-        author.name = name
-        author.url = "http://" + urlparse(article.url).netloc
-        author.save()
-        consider.append(author)
 
     # This is all pretty ugly. Probably should go by author name alone?
     # At some point, should check the super article and super author.

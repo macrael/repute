@@ -17,6 +17,7 @@ def recent(request) :
 
 # This is the call to add a new article
 def add_article(request) :
+    print "We Enter The Add Call"
     # deal with the user for real...
     user = User.objects.get(username__exact='macrael')
 
@@ -30,6 +31,10 @@ def add_article(request) :
         #read_date = models.DateTimeField('date read')
         #vote = models.IntegerField()
 
+        print request.GET
+        print "--"
+        print request.POST
+
         params = request.GET
         scrape_params = []
 
@@ -42,10 +47,16 @@ def add_article(request) :
                 new_article = Article.objects.get(user=user,url=params['url'])
                 print "OLD HAT"
             except (Article.DoesNotExist) :
+                # Before doing anything else, append it to the file so we don't lose it
+                print "writing to backup"
+                backup = open('url_backup.txt','a')
+                backup.write(params['url'] + '\n')
+                backup.close()
                 print "This Article Has Not Been Seen Before"
                 new_article = Article()
                 new_article.url = params['url']
         else :
+            print "Well there isn't a url, so...."
             raise Http404
 
         if 'vote' in params :
@@ -59,7 +70,7 @@ def add_article(request) :
             print "bad vote"
             new_article.vote = 0
 
-        if 'title' in params :
+        if 'title' in params and params['title'] != "":
             new_article.title = params['title']
         else :
             print "bad title"
@@ -70,17 +81,17 @@ def add_article(request) :
             new_article.pub_date = datetime.datetime.strptime(params['pub_date'],"%Y-%m-%d")
         else :
             print "bad pub_date"
-            new_article.pub_date = datetime.date.today()
+            new_article.pub_date = datetime.datetime.today()
             scrape_params.append('pub_date')
 
         if 'read_date' in params :
             new_article.read_date = datetime.datetime.strptime(params['read_date'],"%Y-%m-%d")
         else :
             print "no read_date"
-            new_article.read_date = datetime.date.today()
+            new_article.read_date = datetime.datetime.today()
 
         author_name = ""
-        if 'author_name' in params :
+        if 'author_name' in params and params['author_name'] != "":
             author_name = params['author_name']
         else :
             print "No Author Name"
