@@ -1,7 +1,9 @@
 function didread() {
 //shamelessly stolen from instapaper. Probably should indicate that. 
 
-var doc = document,
+var doc = document;
+var title = document.title;
+var url = document.location;
 
 js_el = doc.createElement('scr'+'ipt'),
 
@@ -9,8 +11,8 @@ body = doc.body;
 
 try {
     if(!body) throw(0);
-
-    js_el.setAttribute('src','http://localhost:8000/javascript/add_article.js');
+    //at some point, need to have a user id in here.
+    js_el.setAttribute('src','{{ root_url }}initial_add.js?url=' + url + '&title=' + title);
     body.appendChild(js_el);
 
     }catch(e){

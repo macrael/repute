@@ -2,10 +2,20 @@ from didread.models import *
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, Http404
+import codecs
 import datetime
+import settings
 
 import didread.controller
 
+
+def greet(request) :
+    # this is the greeting page
+    # the most important thing is to generate the bookmarklet
+
+    bookmarklet = didread.controller.current_bookmarklet()
+
+    return render_to_response('didread/greet.html', {'bookmarklet' : bookmarklet})
 
 def recent(request) :
     #user is me
@@ -49,7 +59,7 @@ def add_article(request) :
             except (Article.DoesNotExist) :
                 # Before doing anything else, append it to the file so we don't lose it
                 print "writing to backup"
-                backup = open('url_backup.txt','a')
+                backup = codecs.open('url_backup.txt','a', encoding='utf8')
                 backup.write(params['url'] + '\n')
                 backup.close()
                 print "This Article Has Not Been Seen Before"
@@ -126,8 +136,31 @@ def add_article(request) :
         raise Http404
 
     print "Past the except"
+
+    # if this came from "initial_add" (the bookmarklet) return the JS.
+    # If it came from /add (the JS) then return some sort of success code
+
+    print request.path
+
+    if "initial_add" in request.path :
+        print "This was from the initial add"
+        # This will be where we do logic to get the scraping js
+        author_string = ""
+        if new_article.author :
+            author_string = new_article.author.name
+        title_string = ""
+        if new_article.title :
+            title_string = new_article.title
+            
+        return render_to_response('didread/add_article.js', { 'root_url' : settings.MY_ROOT_URL, 'url' : params['url'] , 'author' : author_string, 'title' : title_string})
+
+
+    if request.path == "/add" :
+        print "This came from the second add"
+        return HttpResponse("successfully added the thing.")
+
+    return HttpResponse("How did you get here?")
     
-    return HttpResponse("successfully added the thing.")
 
 def related_articles(request) :
     return HttpResponse("NO")

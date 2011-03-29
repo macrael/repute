@@ -2,6 +2,10 @@
 from urlparse import urlparse
 from didread.models import *
 from django.contrib.auth.models import User
+from django import template
+import settings
+import re
+import urllib
 
 # Find associate and return || DOES NOT SAVE!
 def author_for_article(article,name) :
@@ -55,3 +59,39 @@ def author_for_article(article,name) :
     print consider
 
     return None
+
+
+
+
+def current_bookmarklet() :
+    
+    tem = template.loader.get_template('didread/bookmarklet.js')
+    print tem
+    
+    rendered = tem.render(template.Context({"root_url" : settings.MY_ROOT_URL } ))
+    
+    print rendered
+
+    # regular expressions copied from
+    # http://daringfireball.net/2007/03/javascript_bookmarklet_builder
+    comments_re = re.compile('(^|\s+)//.+\n')
+    tabs_re = re.compile('\t')
+    spaces_re = re.compile('[ ]{2,}')
+    lead_re = re.compile('^\s+')
+    trail_re = re.compile('\s+$')
+    newline_re = re.compile('\n')
+
+    rendered = comments_re.sub("",rendered)
+    rendered = tabs_re.sub(" ",rendered)
+    rendered = spaces_re.sub(" ",rendered)
+    rendered = lead_re.sub("",rendered)
+    rendered = trail_re.sub("",rendered)
+    rendered = newline_re.sub("",rendered)
+    
+    print rendered
+
+    rendered = "javascript:" + urllib.quote(rendered,"():{}/;=,+")
+
+    print rendered
+
+    return rendered

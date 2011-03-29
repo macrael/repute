@@ -97,3 +97,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+
+# Custom Settings for didread (maybe belongs in didread/settings.py)
+
+MY_ROOT_URL = "http://localhost:8000/"
+

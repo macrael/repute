@@ -3,27 +3,33 @@ x basic bookmarklet
 x bookmarklet 2.0
 * bookmarklet 3.0
     * steelo
-    * move the js to be dynamic
-    * submit title and url in initial send
-    * js should come back with the stored title and stored author name if it
+    x move the js to be dynamic
+    x submit title and url in initial send
+        x recieve that in the same place
+    x js should come back with the stored title and stored author name if it
         exists
-    * auto populate those fields
+    x auto populate those fields
     * bookmarklet should disappear afterwards
     
-* Get UNICODE support on this machine. 
-    http://www.linux-cjk.net/Console/garabik/garabik.howto.html
-    http://macrael.xen.prgmr.com:8005/add?url=http://steveblank.com/2010/07/12/nukeem-till-they-glow-–-quitting-my-first-job/&title=Nuke’em%20‘Till%20They%20Glow%20–%20Quitting%20My%20First%20Job%20«%20Steve%20Blank&
 
-
+x put the url in config.py
+x put a "generate bookmarklet" script in that will substitute in the proper URL
 
 
 BOOKMARKLET
-* have initial add be done in the actual bookmarklet
+* align all text/fields properly
+
+x have initial add be done in the actual bookmarklet
     * this way we can one day customize the response for different sites
+
+x make it attached to the viewport, float. don't be attached to the top of the
+  body. I am usually scrolled down when i click read.
+    * This needs to work on iphone/ipad
 
 * needs ui
     * some indication that it is doing sometihng
     * drop down like a sheet from the top of the screen
+        * swoosh in from above, then away. 
 
 get author name
     * have a field you can type into, or just hilight the name
@@ -32,7 +38,7 @@ get author name
 
 get notes about article (/author?)
 
-get votes
+x get votes
 
 
 
@@ -65,14 +71,27 @@ INFO BOOKMARKLET
 * need to dispaly other artices you read by this person
 
 
+RATING SYSTEM
+* try a 4 star rating approach
+
 
 FRONTPAGE
-put the bookmarklet up for me
+x put the bookmarklet up for me
 
 ----------
 
 EVENTUALLY
 * deploy on prgmr.
     * one day, deploy propperly on prgmr. (mod wsgi)
+* get the correct script mime type for scripts
 
+
+
+
+
+DONE
+------
+x Get UNICODE support on this machine. 
+    http://www.linux-cjk.net/Console/garabik/garabik.howto.html
+    http://macrael.xen.prgmr.com:8005/add?url=http://steveblank.com/2010/07/12/nukeem-till-they-glow-–-quitting-my-first-job/&title=Nuke’em%20‘Till%20They%20Glow%20–%20Quitting%20My%20First%20Job%20«%20Steve%20Blank&
 

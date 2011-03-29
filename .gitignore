@@ -2,4 +2,7 @@
 *.sqlite3
 make_bookmarklet.pl
 settings.py
+url_backup.txt
+nohup.out
+*.swp
 

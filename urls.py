@@ -14,9 +14,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
 
+    (r'^$','didread.views.greet'),
     (r'^recent/$','didread.views.recent'),
+
     (r'^add$','didread.views.add_article'),
+    (r'^initial_add.js$','didread.views.add_article'),
 
-
-    (r'^javascript/(?P<path>.*)$','django.views.static.serve',{'document_root' : '/Users/macrael/code/repute/static_files/javascript/'}),
 )
