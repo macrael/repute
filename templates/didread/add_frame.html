@@ -1,0 +1,26 @@
+<style>
+#did_read_form {
+    color: black;
+    text-align:left;
+}
+#did_read_form input[type=text] {
+    width: 300px;
+    background-color:white;
+}
+#did_read_form select {
+    background-color:white;
+}
+</style>
+<form id="did_read_form" onsubmit="send_info(this);return false" action="">
+<label for="title">Title: </label><br>
+<input type="text" name="title" id="did_read_title"><br>
+<label for="author">Author: </label><br>
+<input type="text" name="author_name" id="did_read_author"><br>
+<label for="vote">Vote: </label>
+<select name="vote" id="did_read_vote"> 
+    <option value="-1">bad</option> 
+    <option selected value="0">meh</option>
+    <option value="1">good</option>
+</select><br>
+<input type="submit" value="Did Read">
+</form>

@@ -3,6 +3,7 @@ from urlparse import urlparse
 from didread.models import *
 from django.contrib.auth.models import User
 from django import template
+from django.template.loader import render_to_string
 import settings
 import re
 import urllib
@@ -65,10 +66,7 @@ def author_for_article(article,name) :
 
 def current_bookmarklet() :
     
-    tem = template.loader.get_template('didread/bookmarklet.js')
-    print tem
-    
-    rendered = tem.render(template.Context({"root_url" : settings.MY_ROOT_URL } ))
+    rendered = render_to_string('didread/bookmarklet.js',{"root_url" : settings.MY_ROOT_URL } )
     
     print rendered
 
@@ -95,3 +93,25 @@ def current_bookmarklet() :
     print rendered
 
     return rendered
+
+
+def add_frame_contents() :
+
+    rendered = render_to_string('didread/add_frame.html',{})
+
+    tabs_re = re.compile('\t')
+    spaces_re = re.compile('[ ]{2,}')
+    lead_re = re.compile('^\s+')
+    trail_re = re.compile('\s+$')
+    newline_re = re.compile('\n')
+
+    rendered = tabs_re.sub(" ",rendered)
+    rendered = spaces_re.sub(" ",rendered)
+    rendered = lead_re.sub("",rendered)
+    rendered = trail_re.sub("",rendered)
+    rendered = newline_re.sub("",rendered)
+
+    print rendered
+
+    return rendered
+

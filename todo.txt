@@ -10,14 +10,26 @@ x bookmarklet 2.0
         exists
     x auto populate those fields
     * bookmarklet should disappear afterwards
+
+x add delete buttons to recent list
     
 
 x put the url in config.py
 x put a "generate bookmarklet" script in that will substitute in the proper URL
 
+VIEWS
+* recent list
+    * Will need proper ajax deletion
+
+* Author list
+    * /authors
+    * go recently read or a[habetical or quantity read
 
 BOOKMARKLET
 * align all text/fields properly
+
+* allow the user to move it
+    * remeber where it was moved to?
 
 x have initial add be done in the actual bookmarklet
     * this way we can one day customize the response for different sites
@@ -59,6 +71,7 @@ SITE PARSING
 ADD PATH
 * need to be careful in getting back authors, what about people who share a
     name?
+    * am I handling authors who are created correctly?
 
 * probably drop the publised date
     * maybe track the orignally submitted date. 

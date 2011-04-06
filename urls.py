@@ -16,8 +16,12 @@ urlpatterns = patterns('',
 
     (r'^$','didread.views.greet'),
     (r'^recent/$','didread.views.recent'),
+    (r'^authors/$','didread.views.authors'),
 
     (r'^add$','didread.views.add_article'),
     (r'^initial_add.js$','didread.views.add_article'),
+
+
+    (r'^article/(?P<article_id>\d+)/delete$','didread.views.delete_article'),
 
 )

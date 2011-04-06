@@ -1,19 +1,56 @@
 //need to gather info from the current page, then hit that url. then cleanup.
 // rooturl:{{ root_url }}
+//
 // url:    {{ url }}
 // title:  {{ title }}
 // author: {{ author }}
+// frame_contents: {{ frame_contents }}
 
-function send_info() {
+function send_info(finfo) {
+
+    console.log("SENDINGININININ");
+
+    console.log(finfo);
+
+    console.log(finfo.title.value);
+    console.log(finfo.author_name.value);
+    console.log(finfo.vote.value);
+
+
+    var title = finfo.title.value;
+    var author_name = finfo.author_name.value;
+    var vote = finfo.vote.value;
+    var url = document.location;
+
+    var request = "?url=" + escape(url) + "&title="+ escape(title) + "&author_name=" + escape(author_name) + "&vote=" + escape(vote);
+
+    request = "{{ root_url }}add" + request;
+
+    console.log(request);
+
+
+
+    var js_el = document.createElement('scr'+'ipt');
+    js_el.setAttribute('src', request);
+    document.body.appendChild(js_el);
+
+
+    console.log("DONENENENNENEE");
+    
+    
+
+    return false;
+}
+
+function setup_form() {
     console.log("STARTING SEND");
     
-    doc = document;
-    durl = doc.location;
-    dtitle = doc.title;
+    var durl = document.location;
+    var dtitle = document.title;
 
     //http://localhost:8000/add?url=http://daringfireball.net/2011/03/something_big&vote=-1&title=Something%20Big&pub_date=2010-07-4
     
-    display = document.createElement('iframe');
+    var display = document.createElement('div');
     display.name = 'display_frame';
     display.id = 'display_frame';
 
@@ -27,12 +64,16 @@ function send_info() {
     display.style.borderColor = "darkgray";
     display.style.borderStyle = "solid";
     display.style.webkitBoxShadow = "5px 5px 5px #222";
+    display.style.padding = "10px";
 
     document.body.appendChild(display);
 
-    window['display_frame'].document.write('<html><body><form action="{{ root_url }}add" method="get"><input type="hidden" name="url" value="' + document.location + '"><label for="title">Title: </label><input type="text" value="{{ title }}" name="title" id="title"><br><label for="author">Author: </label><input type="text" name="author_name" value="{{ author }}" id="author"><br><label for="vote">Vote: </label><select name="vote" id="vote"> <option value="-1">bad</option> <option selected value="0">meh</option><option value="1">good</option></select><br><input type="submit" value="Did Read"></form></body></html>');
+    display.innerHTML = '{{ frame_contents|safe }}';
+
+    document.getElementById("did_read_title").value = '{{ title }}';
+    document.getElementById("did_read_author").value = '{{ author }}';
 
     console.log("ENDING SEND");
 }
 
-send_info();
+setup_form();

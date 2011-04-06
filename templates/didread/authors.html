@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Authors</title>
+</head>
+<body>
+Hey.
+
+{% if not authors %}
+<p> Something went wrong, you shiould have that.</p>
+{% endif %}
+
+{% for author in authors %}
+    <div>{{ author.name }}
+    <ol>
+        {% for article in author.article_set.all %}
+        <li>{{article.title}}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endfor %}
+
+
+</body>
+</html>

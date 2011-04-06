@@ -9,11 +9,11 @@ What.
 <p> Something went wrong, you shiould have that.</p>
 {% endif %}
 
-<ol>
+<table>
 {% for article in recent_reads %}
-    <li>{{ article.title }}</li>
+    <tr><td>{{ article.author }}</td><td><a href="{{ article.url }}">{{ article.title }}</a></td><td>{{ article.vote }}</td><td><a href="/article/{{ article.id }}/delete">del</a></td></tr>
 {% endfor %}
-</ol>
+</table>
 
 </body>
 </html>
