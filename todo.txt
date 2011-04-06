@@ -9,7 +9,7 @@ x bookmarklet 2.0
     x js should come back with the stored title and stored author name if it
         exists
     x auto populate those fields
-    * bookmarklet should disappear afterwards
+    x bookmarklet should disappear afterwards
 
 x add delete buttons to recent list
     
@@ -26,7 +26,9 @@ VIEWS
     * go recently read or a[habetical or quantity read
 
 BOOKMARKLET
-* align all text/fields properly
+* make sure the css is overriding everything. It is looking weird on some sites
+
+x align all text/fields properly
 
 * allow the user to move it
     * remeber where it was moved to?
@@ -52,6 +54,11 @@ get notes about article (/author?)
 
 x get votes
 
+
+USERS
+* signup
+* custom submit javascript
+* session modifies what is displayed
 
 
 SITE PARSING
