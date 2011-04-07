@@ -1,4 +1,8 @@
 NOWNOWNOW
+* utf-8 looks broken again
+    * not recording the title anymore. (some titles have escaped characters in
+      them.)
+
 x basic bookmarklet
 x bookmarklet 2.0
 * bookmarklet 3.0
@@ -16,6 +20,12 @@ x add delete buttons to recent list
 
 x put the url in config.py
 x put a "generate bookmarklet" script in that will substitute in the proper URL
+
+
+New Django Project:
+Notes. Just a bookmarklet that lets me append notes to a file. This lets me
+send back notes on this project as I am using it. The best way to get feedback
+into the app.
 
 VIEWS
 * recent list
