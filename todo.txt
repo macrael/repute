@@ -1,4 +1,8 @@
 NOWNOWNOW
+x really, utf needs to work right.
+* different users.
+
+
 x basic bookmarklet
 x bookmarklet 2.0
 * bookmarklet 3.0
@@ -97,6 +101,14 @@ RATING SYSTEM
 
 FRONTPAGE
 x put the bookmarklet up for me
+
+
+SECURITY
+* NO PASSWORDS UNTIL YOU HAVE A CERT
+* can someone do something bad with my unescaped title/author through
+    javascript?
+    * I don't think so. Everything is comging back to the app in url. 
+    * might be able to do something funny in the JS but probably not. 
 
 ----------
 

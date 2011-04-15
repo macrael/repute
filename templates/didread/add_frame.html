@@ -1,26 +1,36 @@
 <style>
+.did_read_reset{
+    font-size:16px;
+    font-family: "Verdana","Helvetica",sans-serif;
+    background-color:white;
+    color:black;
+}
 #did_read_form {
-    color: black;
     text-align:left;
+    background-color:lightgray;
 }
 #did_read_form input[type=text] {
     width: 300px;
     background-color:white;
 }
 #did_read_form select {
-    background-color:white;
+
+}
+#did_read_form input[type=submit]{
+    float:right;
+
 }
 </style>
-<form id="did_read_form" onsubmit="send_info(this);return false" action="">
+<form id="did_read_form" class="did_read_reset" onsubmit="send_info(this);return false" action="">
 <label for="title">Title: </label><br>
-<input type="text" name="title" id="did_read_title"><br>
+<input type="text" name="title" id="did_read_title" class="did_read_reset"><br>
 <label for="author">Author: </label><br>
-<input type="text" name="author_name" id="did_read_author"><br>
+<input type="text" name="author_name" id="did_read_author" class="did_read_reset"><br>
 <label for="vote">Vote: </label>
-<select name="vote" id="did_read_vote"> 
+<select name="vote" id="did_read_vote" class="did_read_reset"> 
     <option value="-1">bad</option> 
     <option selected value="0">meh</option>
     <option value="1">good</option>
-</select><br>
-<input type="submit" value="Did Read">
+</select>
+<input type="submit" class="did_read_reset" value="Did Read">
 </form>

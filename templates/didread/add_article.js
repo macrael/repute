@@ -22,23 +22,18 @@ function send_info(finfo) {
     var vote = finfo.vote.value;
     var url = document.location;
 
-    var request = "?url=" + escape(url) + "&title="+ escape(title) + "&author_name=" + escape(author_name) + "&vote=" + escape(vote);
+    var request = "?url=" + url + "&title="+ title + "&author_name=" + author_name + "&vote=" + vote;
 
     request = "{{ root_url }}add" + request;
 
     console.log(request);
 
-
-
     var js_el = document.createElement('scr'+'ipt');
     js_el.setAttribute('src', request);
     document.body.appendChild(js_el);
 
-
     console.log("DONENENENNENEE");
     
-    
-
     return false;
 }
 
@@ -70,8 +65,8 @@ function setup_form() {
 
     display.innerHTML = '{{ frame_contents|safe }}';
 
-    document.getElementById("did_read_title").value = '{{ title }}';
-    document.getElementById("did_read_author").value = '{{ author }}';
+    document.getElementById("did_read_title").value = '{{ title|safe|addslashes }}';
+    document.getElementById("did_read_author").value = '{{ author|safe|addslashes }}';
 
     console.log("ENDING SEND");
 }
