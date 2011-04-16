@@ -1,6 +1,7 @@
 NOWNOWNOW
 x really, utf needs to work right.
 * different users.
+x an ampersand in title or author will not work. 
 
 x basic bookmarklet
 x bookmarklet 2.0

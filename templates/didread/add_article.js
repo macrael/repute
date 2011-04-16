@@ -22,7 +22,7 @@ function send_info(finfo) {
     var vote = finfo.vote.value;
     var url = document.location;
 
-    var request = "?url=" + url + "&title="+ title + "&author_name=" + author_name + "&vote=" + vote;
+    var request = "?url=" + url + "&title="+ encodeURIComponent(title) + "&author_name=" + encodeURIComponent(author_name) + "&vote=" + vote;
 
     request = "{{ root_url }}add" + request;
 
