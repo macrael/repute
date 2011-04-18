@@ -64,9 +64,10 @@ def author_for_article(article,name) :
 
 
 
-def current_bookmarklet() :
+def bookmarklet_for_user(user) :
     
-    rendered = render_to_string('didread/bookmarklet.js',{"root_url" : settings.MY_ROOT_URL } )
+    rendered = render_to_string('didread/bookmarklet.js',{"root_url" :
+    settings.MY_ROOT_URL , "user_prefix": user.id} )
     
     print rendered
 

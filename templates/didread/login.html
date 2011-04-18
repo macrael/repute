@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Who are you?</title>
+</head>
+<body>
+Please log in to get at the stuff.
+
+<form method="post" action="{% url django.contrib.auth.views.login %}">
+{% csrf_token %}
+
+{{ form.username.label_tag }}
+{{ form.username }}
+
+<input type="submit" value="login" >
+<input type="hidden" name="next" value="{{ next }}" >
+<input type="hidden" name="password" value="cats" >
+
+</form>
+
+<p>N.B. Right now there are no passwords. To do passwords right, I need to get
+a proper certificate and do encryption and what not, so rather than let you use
+a password (which, lets be honest, would probably have been your 'regular') and
+transmit it all in the clear over the network, for now there are no
+passwords.</p>
+
+
+<hr>
+
+<p>If you have not created a user account, please do so below.</p>
+
+<p>Sign up:</p>
+<form method="post" action="{% url didread.views.signup %}" >
+{% csrf_token %}
+<label>First Name</label><input type="text" name="first_name" ><br>
+<label>Last Name</label><input type="text" name="last_name" ><br>
+<label>Username</label><input type="text" name="username" ><br>
+<label>email</label><input type="text" name="email_address" >
+
+<input type="hidden" name="password" value="cats" >
+<input type="submit" value="sign up" >
+
+</form>
+
+<p>For now, I'm asking for first names and last names. Just to keep these
+accounts tied to a real person. I like it when we use our real identifiers
+online.</p>
+
+
+</body>
+</html>

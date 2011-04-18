@@ -12,7 +12,7 @@ body = doc.body;
 try {
     if(!body) throw(0);
     //at some point, need to have a user id in here.
-    js_el.setAttribute('src','{{ root_url }}initial_add.js?url=' + url + '&title=' + encodeURIComponent(title));
+    js_el.setAttribute('src','{{ root_url }}initial_add/{{ user_prefix }}?url=' + url + '&title=' + encodeURIComponent(title));
     body.appendChild(js_el);
 
     }catch(e){

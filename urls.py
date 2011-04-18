@@ -18,10 +18,16 @@ urlpatterns = patterns('',
     (r'^recent/$','didread.views.recent'),
     (r'^authors/$','didread.views.authors'),
 
-    (r'^add$','didread.views.add_article'),
-    (r'^initial_add.js$','didread.views.add_article'),
+    (r'^add/(?P<user_prefix>\d+)$','didread.views.add_article'),
+    (r'^initial_add/(?P<user_prefix>\d+)$','didread.views.add_article'),
 
 
     (r'^article/(?P<article_id>\d+)/delete$','didread.views.delete_article'),
+
+    (r'^login/$', 'django.contrib.auth.views.login',{'template_name':'didread/login.html'}),
+    (r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
+    (r'^signup/$', 'didread.views.signup'),
+    
+
 
 )

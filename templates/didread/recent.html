@@ -3,11 +3,17 @@
 <title>Recent</title>
 </head>
 <body>
-What.
+
+{% if user.is_authenticated %}
+    <p>Hi, {{ user.first_name }}. <a href="{% url django.contrib.auth.views.logout_then_login %}">logout</a> </p>
+{% else %}
+    <p>WHAT? THATS UNPOSSIBLE</p>
+{% endif %}
 
 {% if not recent_reads %}
 <p> Something went wrong, you shiould have that.</p>
 {% endif %}
+
 
 <table>
 {% for article in recent_reads %}

@@ -24,7 +24,7 @@ function send_info(finfo) {
 
     var request = "?url=" + url + "&title="+ encodeURIComponent(title) + "&author_name=" + encodeURIComponent(author_name) + "&vote=" + vote;
 
-    request = "{{ root_url }}add" + request;
+    request = "{{ root_url }}add/{{ user_prefix }}" + request;
 
     console.log(request);
 
