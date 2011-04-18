@@ -3,17 +3,19 @@
 <title>Authors</title>
 </head>
 <body>
-Hey.
+Hey, {{ user.first_name }}.<br>
+Authors galore. 
 
 {% if not authors %}
-<p> Something went wrong, you shiould have that.</p>
+<p>You have not saved any articles yet. Use the bookmarklet you can find 
+<a href="/">here</a> to add things to this list.</p>
 {% endif %}
 
 {% for author in authors %}
     <div>{{ author.name }}
     <ol>
         {% for article in author.article_set.all %}
-        <li>{{article.title}}</li>
+        <li><a href="{{ article.url }}">{{article.title}}</a></li>
         {% endfor %}
     </ol>
 </div>

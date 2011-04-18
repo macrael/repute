@@ -29,5 +29,5 @@ urlpatterns = patterns('',
     (r'^signup/$', 'didread.views.signup'),
     
 
-
 )
+

@@ -3,6 +3,10 @@
 <title>Who are you?</title>
 </head>
 <body>
+{% if form.errors %}
+<p style="background-color:yellow">That username does not exist here.</p>
+{% endif %}
+
 Please log in to get at the stuff.
 
 <form method="post" action="{% url django.contrib.auth.views.login %}">
