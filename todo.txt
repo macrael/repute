@@ -21,6 +21,15 @@ x put the url in config.py
 x put a "generate bookmarklet" script in that will substitute in the proper URL
 
 
+Clean up
+--------
+fix up bad urls
+
+get good title
+--------------
+strip out common bits between differnt pages of wesbsite
+strip out whatever is there when there at root url
+
 New Django Project:
 Notes. Just a bookmarklet that lets me append notes to a file. This lets me
 send back notes on this project as I am using it. The best way to get feedback
