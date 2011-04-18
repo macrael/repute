@@ -2,6 +2,15 @@ from didread.models import *
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login
+
+from django.template import RequestContext
+from django.core.urlresolvers import reverse
+
+from django.db import IntegrityError
+
 import codecs
 import datetime
 import settings
@@ -10,31 +19,76 @@ import didread.controller
 
 
 def greet(request) :
+    print request.user
+    if request.user.is_authenticated() :
+        print "ALLL OGOOOOD"
+    else :
+        print "ALL OUT"
     # this is the greeting page
     # the most important thing is to generate the bookmarklet
 
-    bookmarklet = didread.controller.current_bookmarklet()
+    # 2 distinct paths: 
+    # if not logged in, offer login and signup
+    # if logged in, offer bookmarklet.
 
-    return render_to_response('didread/greet.html', {'bookmarklet' : bookmarklet})
+    bookmarklet = didread.controller.bookmarklet_for_user(request.user)
 
-def recent(request) :
-    #user is me
-    latest_reads = Article.objects.all().order_by('-read_date')
+    return render_to_response('didread/greet.html', {'bookmarklet' :bookmarklet}, context_instance=RequestContext(request))
 
-    return render_to_response('didread/recent.html', {'recent_reads' : latest_reads})
 
-def authors(rquest) :
-    #user is me
-    authors = Author.objects.all().order_by('name')
+def signup(request) :
+    print "SIGING ON UP"
+    params = request.POST
+    print params
+    # Check and see if the user has been created before, return error in that
+
+    try :
+        username = params["username"]
+        email_address = params["email_address"]
+        password = params["password"]
+        first_name = params["first_name"]
+        last_name = params["last_name"]
+    except Exception :
+        print "INCOMPLETE FORM"
+        return HttpResponseRedirect(reverse('django.contrib.auth.views.login'))
+
+    # create the user
+    try :
+        new_user = User.objects.create_user(username,email_address,password)
+        new_user.first_name = first_name
+        new_user.last_name = last_name
+        new_user.save()
+    except IntegrityError :
+        print "CAN'T DO. Can't have the same user twice"
+        return HttpResponseRedirect(reverse('django.contrib.auth.views.login'))
+
+    user = authenticate(username=username, password=password)
+    login(request,user)
     
-    return render_to_response('didread/authors.html', {'authors' : authors})
+    # redirect the user to /
+    return HttpResponseRedirect('/')
+
+@login_required
+def recent(request) :
+    # Test and see if we are really logged in.
+    latest_reads = request.user.article_set.all().order_by('-read_date')
+
+    return render_to_response('didread/recent.html', {'recent_reads' :latest_reads}, context_instance=RequestContext(request))
+
+@login_required
+def authors(request) :
+    #user is me
+    authors = request.user.author_set.all().order_by('name')
+    
+    return render_to_response('didread/authors.html', {'authors' : authors}, context_instance=RequestContext(request))
 
 
 # This is the call to add a new article
-def add_article(request) :
+def add_article(request,user_prefix) :
     print "We Enter The Add Call"
+    print "USER IS: ",user_prefix
     # deal with the user for real...
-    user = User.objects.get(username__exact='macrael')
+    user = User.objects.get(pk=user_prefix)
 
     do_update = True
         
@@ -167,12 +221,12 @@ def add_article(request) :
 
         frame_string = didread.controller.add_frame_contents()
 
-        context = { 'root_url' : settings.MY_ROOT_URL, 'url' : params['url'] , 'author' : author_string, 'title' : title_string, 'frame_contents' : frame_string}
+        context = { 'root_url' : settings.MY_ROOT_URL, 'url' : params['url'] , 'author' : author_string, 'title' : title_string, 'frame_contents' : frame_string, 'user_prefix': user_prefix}
         
         return render_to_response('didread/add_article.js', context)
 
 
-    if request.path == "/add" :
+    if "/add" in request.path:
         print "This came from the second add"
         return render_to_response('didread/kill_frame.js',{})
 
@@ -182,7 +236,11 @@ def add_article(request) :
 def related_articles(request) :
     return HttpResponse("NO")
 
+# This is super insecure. Can we check that the currently logged in user owns
+# this?
+@login_required
 def delete_article(request, article_id) :
+    # check and see if the user owns this, otherwise error
     article = get_object_or_404(Article, pk=article_id)
     article.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

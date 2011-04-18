@@ -1,6 +1,11 @@
 NOWNOWNOW
 x really, utf needs to work right.
 * different users.
+    * ability to create a new user
+        * this could be restricted to me for now, but who am I kidding.
+x an ampersand in title or author will not work. 
+* bookmarklet stylin
+    * rounded corners on some websites.
 
 x basic bookmarklet
 x bookmarklet 2.0
@@ -38,10 +43,22 @@ into the app.
 VIEWS
 * recent list
     * Will need proper ajax deletion
+    * have the bookmarklet here
 
 * Author list
     * /authors
     * go recently read or a[habetical or quantity read
+    * have the bookmarklet here?
+
+* login.
+
+* landing
+    if you are not logged in, gives you the ability to log in or create an
+    account
+
+    if you are logged in, really should just be the recent list.
+
+* should we show other user's reading lists?
 
 BOOKMARKLET
 * make sure the css is overriding everything. It is looking weird on some sites
@@ -80,6 +97,8 @@ USERS
 
 
 SITE PARSING
+* some sort of title parser. break on the right pattern
+
 * this is going to have to be some sort of configurable dealie per site
     * a regex that gets the title out of the titlebar?
         * how does instapaper do this? (it does not...)
