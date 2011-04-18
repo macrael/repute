@@ -1,11 +1,11 @@
 NOWNOWNOW
 x really, utf needs to work right.
 * different users.
-    * ability to create a new user
-        * this could be restricted to me for now, but who am I kidding.
+    x ability to create a new user
 x an ampersand in title or author will not work. 
 * bookmarklet stylin
     * rounded corners on some websites.
+* login with first and last name.
 
 x basic bookmarklet
 x bookmarklet 2.0

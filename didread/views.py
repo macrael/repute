@@ -18,12 +18,8 @@ import settings
 import didread.controller
 
 
+@login_required
 def greet(request) :
-    print request.user
-    if request.user.is_authenticated() :
-        print "ALLL OGOOOOD"
-    else :
-        print "ALL OUT"
     # this is the greeting page
     # the most important thing is to generate the bookmarklet
 
@@ -138,7 +134,7 @@ def add_article(request,user_prefix) :
 
             if 'vote' in params :
                 vote = int(params['vote'])
-                if 1 >= vote and -1 <= vote :
+                if 3 >= vote and 0 <= vote :
                     new_article.vote = vote
                 else :
                     new_article.vote = 0
