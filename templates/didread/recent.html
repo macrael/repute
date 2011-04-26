@@ -18,6 +18,11 @@
 
 <table>
 {% for article in recent_reads %}
+{% ifchanged article.read_date.date %}
+    <tr><td></td></tr>
+    <tr><td><strong> {{ article.read_date.date }} </strong></td></tr>
+    <tr><td></td></tr>
+{% endifchanged %}
     <tr><td>{{ article.author }}</td><td><a href="{{ article.url }}">{{ article.title }}</a></td><td>{{ article.vote }}</td><td><a href="/article/{{ article.id }}/delete">del</a></td></tr>
 {% endfor %}
 </table>
