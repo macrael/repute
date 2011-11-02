@@ -9,4 +9,5 @@ http://code.google.com/p/django-evolution/
 
 look for instances of /PATH/TO/PROJECT/ in settings.py and fix them
 look for instances of localhost:8000 and point them somewhere else if you like
+set your timezone in settings.py
 

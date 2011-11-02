@@ -161,6 +161,8 @@ def add_article(request,user_prefix) :
                 new_article.read_date = datetime.datetime.strptime(params['read_date'],"%Y-%m-%d")
             else :
                 print "no read_date"
+                print datetime.datetime.today()
+                # we shouldn't update the read time if this
                 new_article.read_date = datetime.datetime.today()
 
             author_name = ""
@@ -178,7 +180,7 @@ def add_article(request,user_prefix) :
             print new_article.vote
             print new_article.pub_date
             print new_article.read_date
-            print author_name
+            print author_name.encode('utf-8')
             print scrape_params
 
             # get the author for this url

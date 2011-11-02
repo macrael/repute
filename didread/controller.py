@@ -36,7 +36,7 @@ def author_for_article(article,name) :
 
         if len(consider) == 1 :
             article.author = consider[0]
-            print "Found Author: " + consider[0].name
+            print "Found Author: " + consider[0].name.encode('utf-8')
             return consider[0]
 
     consider = []
@@ -52,7 +52,7 @@ def author_for_article(article,name) :
 
     if len(consider) == 1 :
         article.author = consider[0]
-        print "Found Author: " + consider[0].name
+        print "Found Author: " + consider[0].name.encode('utf-8')
         return consider[0]
 
 

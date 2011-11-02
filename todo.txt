@@ -60,6 +60,13 @@ VIEWS
 
 * should we show other user's reading lists?
 
+(COMPOSIT VIEWS)
+* Header
+    * login greet
+    * doctype, css etc.
+    * your bookmarklet
+
+
 BOOKMARKLET
 * make sure the css is overriding everything. It is looking weird on some sites
 
@@ -142,6 +149,28 @@ SECURITY
     javascript?
     * I don't think so. Everything is comging back to the app in url. 
     * might be able to do something funny in the JS but probably not. 
+
+
+URLS
+====
+URLS
+/                   // login?
+                    // list of users?
+/login
+/logout
+/signup
+/add
+/load_frame
+/authors            // ? a global list of authors?
+/articles           // ? a global list of articles?
+/best               // ? a filtered list of articles?
+
+/<username>         // "recent"
+/<username>/authors
+/<username>/article/<article_id>/delete
+
+
+
 
 ----------
 
