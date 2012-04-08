@@ -18,6 +18,7 @@ x bookmarklet 2.0
         exists
     x auto populate those fields
     x bookmarklet should disappear afterwards
+    * If service is down, should show an error rather than do nothing. 
 
 x add delete buttons to recent list
     
