@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 
     (r'^$','didread.views.greet'),
     (r'^recent/$','didread.views.recent'),
+    (r'^excellent/$','didread.views.excellent'),
     (r'^authors/$','didread.views.authors'),
 
     (r'^add/(?P<user_prefix>\d+)$','didread.views.add_article'),

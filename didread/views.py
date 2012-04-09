@@ -65,18 +65,24 @@ def signup(request) :
     return HttpResponseRedirect('/')
 
 @login_required
-def recent(request) :
+def recent(request):
     # Test and see if we are really logged in.
     latest_reads = request.user.article_set.all().order_by('-read_date')
 
-    return render_to_response('didread/recent.html', {'recent_reads' :latest_reads}, context_instance=RequestContext(request))
+    return render_to_response('didread/recent.html', {'recent_reads': latest_reads}, context_instance=RequestContext(request))
 
 @login_required
-def authors(request) :
+def excellent(request):
+    excellent_reads = request.user.article_set.filter(vote=3).order_by('-read_date')
+
+    return render_to_response('didread/recent.html', {'recent_reads': excellent_reads}, context_instance=RequestContext(request))
+
+@login_required
+def authors(request):
     #user is me
     authors = request.user.author_set.all().order_by('name')
     
-    return render_to_response('didread/authors.html', {'authors' : authors}, context_instance=RequestContext(request))
+    return render_to_response('didread/authors.html', {'authors': authors}, context_instance=RequestContext(request))
 
 
 # This is the call to add a new article
