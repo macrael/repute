@@ -11,6 +11,7 @@ x basic bookmarklet
 x bookmarklet 2.0
 * bookmarklet 3.0
     * steelo
+        * Need to specify all, so other sites aren't overriding.
     x move the js to be dynamic
     x submit title and url in initial send
         x recieve that in the same place
@@ -81,7 +82,8 @@ x have initial add be done in the actual bookmarklet
 
 x make it attached to the viewport, float. don't be attached to the top of the
   body. I am usually scrolled down when i click read.
-    * This needs to work on iphone/ipad
+    x This needs to work on iphone/ipad
+    * what if it were in the middle of the screen? Maybe easier to see the author name.
 
 * needs ui
     * some indication that it is doing sometihng
@@ -90,7 +92,7 @@ x make it attached to the viewport, float. don't be attached to the top of the
 
 get author name
     * have a field you can type into, or just hilight the name
-        *someday, could have you click, figure out the element and train the
+        * someday, could have you click, figure out the element and train the
             parser for that site?
 
 get notes about article (/author?)
@@ -99,9 +101,9 @@ x get votes
 
 
 USERS
-* signup
-* custom submit javascript
-* session modifies what is displayed
+x signup
+x custom submit javascript
+x session modifies what is displayed
 
 
 SITE PARSING
@@ -119,6 +121,9 @@ SITE PARSING
         * for some sites it is a custom jobbie. 
             * track if we are starting to get jibberish back.
 
+* parsing tester:
+    * take every website submitted, display what would have come out of parsing that site with the new parser. 
+
 
 ADD PATH
 * need to be careful in getting back authors, what about people who share a
@@ -131,13 +136,15 @@ ADD PATH
 x match incoming url to your urls. (URL/USER is a primary key) 
     * make this match fuzzy. If you can, strip off end detritus
         * might need rules for different sites on how to handle this
+        * if one person links to multiple articles at the same base url, that is an indication that they are using varibles to control content. 
 
 INFO BOOKMARKLET
 * need to dispaly other artices you read by this person
+* eventually this is a plugin. 
 
 
 RATING SYSTEM
-* try a 4 star rating approach
+x try a 4 star rating approach
 
 
 FRONTPAGE
@@ -149,7 +156,8 @@ SECURITY
 * can someone do something bad with my unescaped title/author through
     javascript?
     * I don't think so. Everything is comging back to the app in url. 
-    * might be able to do something funny in the JS but probably not. 
+    * might be able to do something funny in the JS but probably not.
+* eventually, should use session for saving articles, like instapaper, instead of hard coding int
 
 
 URLS

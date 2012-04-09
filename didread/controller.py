@@ -8,7 +8,7 @@ import settings
 import re
 import urllib
 
-# Find associate and return || DOES NOT SAVE!
+# Find associate and return
 def author_for_article(article,name) :
     print "Entering Author Get"
     parsed = urlparse(article.url)

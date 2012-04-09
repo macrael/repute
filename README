@@ -1,14 +1,19 @@
 Not much going on yet. Idea is to keep track of who you are reading online.
 
-
 Setup
 -----
-You will need to install the following dependencies:
-Django
-http://code.google.com/p/django-evolution/
 
-look for instances of /PATH/TO/PROJECT/ in settings.py and fix them
-look for instances of localhost:8000 and point them somewhere else if you like
-set your timezone in settings.py
+1. sudo easy_install django
+2. sudo easy_sintall django_evolution
+3. cp settings.py.template settings.py
+4. look for instances of /PATH/TO/PROJECT/ in settings.py and fix them
+5. set your timezone in settings.py
+6. look for instances of localhost:8000 and point them somewhere else if you like
+7. python manage.py syncdb
+8. python manage.py runserver 0.0.0.0:8000 (or whatever you set as the server?)
 
-nohup python manage.py runserver 0.0.0.0:8005 &
+To run in the background: nohup python manage.py runserver 0.0.0.0:8005 &
+
+If you are running on a bare bones linux server, you will need to make sure that everything is set up to support utf-8 printing to the console (right now lots of debugging output might include utf-8)
+
+> http://www.linux-cjk.net/Console/garabik/garabik.howto.html
