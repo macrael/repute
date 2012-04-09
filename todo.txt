@@ -1,4 +1,6 @@
 NOWNOWNOW
+# in the url breaks everything.
+
 x really, utf needs to work right.
 * different users.
     x ability to create a new user
